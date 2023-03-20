@@ -28,7 +28,7 @@ class Calculator(MathDevice):
     super().__init__({})
 
   def add(self, a, b):
-    return max(a, b)
+    return max(list)
 ```
 
 ## Usage
