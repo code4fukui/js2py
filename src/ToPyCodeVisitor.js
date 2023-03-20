@@ -236,6 +236,16 @@ ${consequent}${optionalElIf || optionalAlternate}`
     node.text = `${node.left.text} ${node.operator} ${node.right.text}`    
   }
 
+  leaveUpdateExpression(node) {
+    if (node.operator == "++") {
+      node.text = `${node.argument.text} += 1`;
+    } else if (node.operator == "--") {
+      node.text = `${node.argument.text} -= 1`;
+    } else {
+      throw new Error("not supported yet: " + node.operator);
+    }
+  }
+
   leaveVariableDeclarator(node) {
     node.text = node.init ? `${node.id.text} = ${node.init.text}` : ''
   }

@@ -102,6 +102,8 @@ test('language parts', (t) => {
     ['a || b', 'a or b'],
     ['a && b', 'a and b'],
     ['a ? b : c', 'b if a else c'],
+    ['a++', 'a += 1'],
+    ['a--', 'a -= 1'],
   ]
   t.plan(cases.length)
   cases.map(([js, expected]) => t.equal(f.convert(js), expected, js))
