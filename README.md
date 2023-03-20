@@ -1,4 +1,4 @@
-# Converts JavaScript to Python
+# Converts JavaScript to Python ES modules
 
 Proof of concept, converting JS to Python, for example:
 
@@ -35,3 +35,7 @@ const f = new JS2Py()
 const js = `for (let i = 0; i < 10; i++) { for (let j = 0; j < i; j++) { i + j }}`;
 console.log(f.convert(js));
 ```
+
+## Todo
+
+- test for Deno
