@@ -1,7 +1,5 @@
-'use strict'
-
-const test = require('tape')
-const Pattern = require('../src/Pattern')
+import { test } from "./tape.js";
+import { Pattern } from "../src/Pattern.js";
 
 test('Pattern match', (t) => {
   const p1 = new Pattern('_1.minus(_2)')

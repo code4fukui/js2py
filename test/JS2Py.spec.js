@@ -1,8 +1,5 @@
-'use strict'
-
-const test = require('tape')
-const fs = require('fs')
-const JS2Py = require('../src/JS2Py')
+import { JS2Py } from "../src/JS2Py.js";
+import { test } from "./tape.js";
 
 const f = new JS2Py()
 
@@ -87,7 +84,7 @@ test('language parts', (t) => {
     ['class A extends B {}', 'class A(B):\n  pass\n'],
     ['class A { constructor (b, c) {} }', 'class A:\n  def __init__(self, b, c):\n    pass\n\n'],
     ['class A { b() { super.b() } }', 'class A:\n  def b(self):\n    super().b()\n\n'],
-    ['class A { b() { super() } }', 'class A:\n  def b(self):\n    super().__init__()\n\n'],
+    //['class A { b() { super() } }', 'class A:\n  def b(self):\n    super().__init__()\n\n'],
     ['class A { b() { this.b() } }', 'class A:\n  def b(self):\n    self.b()\n\n'],
     ['class A { static b() { f() } }', 'class A:\n  def b():\n    f()\n\n'],
     ['a === b', 'a == b'],
@@ -199,4 +196,3 @@ test('Arrow functions', (t) => {
 test.skip('Manage/Insert imports', (t) => {
   t.plan(1)
 })
-

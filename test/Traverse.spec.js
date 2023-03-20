@@ -1,8 +1,6 @@
-'use strict'
-
-const espree = require('espree')
-const test = require('tape')
-const Traverse = require('../src/Traverse')
+import { espree } from "../src/espree.js";
+import { test } from "./tape.js";
+import { Traverse } from "../src/Traverse.js";
 
 test('Traverse visits every node', (t) => {
   const ast = espree.parse(`
