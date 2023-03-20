@@ -28,6 +28,8 @@ class Calculator(MathDevice):
 
 ## Usage
 
+### in JavaScript
+
 ```js
 import { JS2Py } from "https://code4fukui.github.io/js2py/src/JS2Py.js";
 
@@ -36,9 +38,18 @@ const js = `for (let i = 0; i < 10; i++) { for (let j = 0; j < i; j++) { i + j }
 console.log(f.convert(js));
 ```
 
-## Todo
+### as a command
 
-- test for Deno
+```sh
+deno run -A cli.js example.js
+```
+
+## Test
+
+```sh
+cd test
+deno test JS2Py.spec.js 
+```
 
 ## Similar Projects
 
