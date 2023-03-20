@@ -39,3 +39,8 @@ console.log(f.convert(js));
 ## Todo
 
 - test for Deno
+
+## Similar Projects
+
+- [int3/js2py: A Javascript-to-Python translation assistant.](https://github.com/int3/js2py)
+- [kevinbarabash/js2py: Transpile JavaScript to Python.](https://github.com/kevinbarabash/js2py)
