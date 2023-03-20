@@ -3,21 +3,26 @@
 Proof of concept, converting JS to Python in Pure JavaScript ES modules, for example:
 
 ```js
-const BigN = require('bignumber.js')
+import { BigNumber as BigN } from "https://unpkg.com/bignumber.js@latest/bignumber.mjs";
+
+class MathDevice {}
 
 class Calculator extends MathDevice {
   constructor(args = []) {
     super({})
   }
-
-  static max(a, b) {
-    return BigN.max(a, b)
+  static max(list) {
+    return BigN.max(list)
   }
+}
 ```
 
 into 
 
 ```py
+class MathDevice:
+  pass
+
 class Calculator(MathDevice):
   def __init__(self, args = []):
     super().__init__({})

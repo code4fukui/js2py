@@ -286,6 +286,9 @@ ${consequent}${optionalElIf || optionalAlternate}`
       }
       return s.replace(/\//g, ".");
     })();
+    if (node.specifiers.length == 1 && node.specifiers[0].local.text == "BigN") { // for BigN
+      return;
+    }
     node.text = `from ${packageName} import ${node.specifiers.map(i => i.local.text).join(", ")}`
   }
 
