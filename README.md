@@ -56,6 +56,10 @@ cd test
 deno test JS2Py.spec.js 
 ```
 
+## Support Libraries
+
+- [MikeMcl/bignumber.js: A JavaScript library for arbitrary-precision decimal and non-decimal arithmetic](https://github.com/MikeMcl/bignumber.js)
+
 ## Similar Projects
 
 - [int3/js2py: A Javascript-to-Python translation assistant.](https://github.com/int3/js2py)
