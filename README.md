@@ -1,6 +1,6 @@
 # Converts JavaScript to Python ES modules
 
-Proof of concept, converting JS to Python, for example:
+Proof of concept, converting JS to Python in Pure JavaScript ES modules, for example:
 
 ```js
 const BigN = require('bignumber.js')
