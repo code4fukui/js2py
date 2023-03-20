@@ -1,6 +1,6 @@
-# Converts JavaScript to Python
+# Converts JavaScript to Python ES modules
 
-Proof of concept, converting JS to Python, for example:
+Proof of concept, converting JS to Python in Pure JavaScript ES modules, for example:
 
 ```js
 const BigN = require('bignumber.js')
@@ -35,3 +35,12 @@ const f = new JS2Py()
 const js = `for (let i = 0; i < 10; i++) { for (let j = 0; j < i; j++) { i + j }}`;
 console.log(f.convert(js));
 ```
+
+## Todo
+
+- test for Deno
+
+## Similar Projects
+
+- [int3/js2py: A Javascript-to-Python translation assistant.](https://github.com/int3/js2py)
+- [kevinbarabash/js2py: Transpile JavaScript to Python.](https://github.com/kevinbarabash/js2py)
