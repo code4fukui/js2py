@@ -102,8 +102,6 @@ test('language parts', (t) => {
     ['a || b', 'a or b'],
     ['a && b', 'a and b'],
     ['a ? b : c', 'b if a else c'],
-    ['a++', 'a += 1'],
-    ['a--', 'a -= 1'],
   ]
   t.plan(cases.length)
   cases.map(([js, expected]) => t.equal(f.convert(js), expected, js))
@@ -197,4 +195,17 @@ test('Arrow functions', (t) => {
 
 test.skip('Manage/Insert imports', (t) => {
   t.plan(1)
+})
+
+test('addition', (t) => {
+  const cases = [
+    ['a++', 'a += 1'],
+    ['a--', 'a -= 1'],
+    ['for (;;) {}', 'while True:\n  pass'],
+    ['for (;; i++) {}', 'while True:\n  pass\n  i += 1'],
+    ['while (a > 3) {}', 'while a > 3:\n  pass'],
+    ['while (true) {}', 'while True:\n  pass'],
+  ]
+  t.plan(cases.length)
+  cases.map(([js, expected]) => t.equal(f.convert(js), expected, js))
 })

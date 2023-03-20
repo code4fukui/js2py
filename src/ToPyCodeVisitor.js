@@ -162,7 +162,7 @@ ${n.body.text}`
 
   leaveForStatement(node) {
     const asForInRange = false ||
-      (node.init.type === 'VariableDeclaration' && node.init.declarations.length === 1) &&
+      (node.init && node.init.type === 'VariableDeclaration' && node.init.declarations.length === 1) &&
       ((node.update.type === 'UpdateExpression' && node.update.operator === '++') ||
       (node.update.type === 'AssignmentExpression' && node.update.operator === '+=')) &&
       (node.test.type === 'BinaryExpression')
@@ -174,16 +174,22 @@ ${n.body.text}`
       node.text = `for ${id} in range(${low}, ${high}):\n${node.body.text}`
       return
     } else {
-      const init = node.init.text
-      const test = node.test.text
-      const update = node.update.text
-      const body = node.body.text
-      node.text = `${init}
-${this.indent}while ${test}:
-${this.indent}${body}
-${this.indentBlock(+1, update)}`
-      return
+      const init = node.init ? node.init.text + "\n" : "";
+      const test = node.test ? node.test.text : "True";
+      const update = node.update ? "\n" + this.indentBlock(+1, node.update.text) : "";
+      const body = node.body.text;
+      node.text = `${init}${this.indent}while ${test}:
+${this.indent}${body}${update}`;
+      return;
     }
+  }
+
+  leaveWhileStatement(node) {
+    const test = node.test.text == "true" ? "True" : node.test.text;
+    const body = node.body.text;
+    node.text = `${this.indent}while ${test}:
+${this.indent}${body}`
+    return
   }
 
   leaveIfStatement(node) {
