@@ -1,8 +1,6 @@
-'use strict'
+import { Pattern } from "./Pattern.js";
 
-const Pattern = require('./Pattern')
-
-class ApplyPatternsVisitor {
+export class ApplyPatternsVisitor {
 
   constructor(patterns) {
     this.patterns = patterns.map(([from, to]) => [new Pattern(from), to])
@@ -18,5 +16,3 @@ class ApplyPatternsVisitor {
     }
   }
 }
-
-module.exports = ApplyPatternsVisitor

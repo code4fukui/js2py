@@ -1,7 +1,5 @@
-'use strict'
-
-const Traverse = require('./Traverse')
-const Pattern = require('./Pattern')
+import { Traverse } from "./Traverse.js";
+import { Pattern } from "./Pattern.js";
 
 class SearchStaticClassAttrs {
 
@@ -44,12 +42,10 @@ class InlineStaticClassAttrs {
   }
 }
 
-function inlineStaticClassAttrs(ast) {
+export function inlineStaticClassAttrs(ast) {
   const search = new SearchStaticClassAttrs()
   Traverse.traverse(ast, search)
   if (search.staticAttrs.length > 0) {
     Traverse.traverse(ast, new InlineStaticClassAttrs(search.staticAttrs))
   }
 }
-
-module.exports = inlineStaticClassAttrs

@@ -1,8 +1,6 @@
-'use strict'
+import { Pattern } from "./Pattern.js";
 
-const Pattern = require('./Pattern')
-
-class JSVisitor {
+export class JSVisitor {
 
   constructor () {
     const importDeclFn = (matches) => ({
@@ -38,5 +36,3 @@ class JSVisitor {
     }
   }
 }
-
-module.exports = JSVisitor

@@ -1,6 +1,4 @@
-'use strict'
-
-class ToPyCodeVisitor {
+export class ToPyCodeVisitor {
 
   constructor() {
     this.DEFAULT_INDENT = '  '
@@ -271,5 +269,3 @@ ${consequent}${optionalElIf || optionalAlternate}`
     node.text = node.body.filter(({type}) => type !== 'Noop').map(e => e.text).join('\n')
   }
 }
-
-module.exports = ToPyCodeVisitor

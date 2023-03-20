@@ -1,9 +1,7 @@
-'use strict'
+import { Traverse } from "./Traverse.js";
+import { RenameVisitor } from "./RenameVisitor.js";
 
-const Traverse = require('./Traverse')
-const RenameVisitor = require('./RenameVisitor')
-
-class ObjectPatternDestructure {
+export class ObjectPatternDestructure {
 
   constructor() {
     this.scopes = []
@@ -110,5 +108,3 @@ class ObjectPatternDestructure {
     }
   }
 }
-
-module.exports = ObjectPatternDestructure

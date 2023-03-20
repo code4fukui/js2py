@@ -1,4 +1,4 @@
-const JS2Py = require('./src/JS2Py')
+import { JS2Py } from "./src/JS2Py.js";
 
 const f = new JS2Py()
 //const js = `for (let i = 0; i < 10; i++) { for (let j = 0; j < i; j++) { i+j }}`;

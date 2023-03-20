@@ -1,5 +1,4 @@
-Converts JavaScript to Python
------------------------------------
+# Converts JavaScript to Python
 
 Proof of concept, converting JS to Python, for example:
 
@@ -7,11 +6,11 @@ Proof of concept, converting JS to Python, for example:
 const BigN = require('bignumber.js')
 
 class Calculator extends MathDevice {
-  constructor (args = []) {
+  constructor(args = []) {
     super({})
   }
 
-  static max (a, b) {
+  static max(a, b) {
     return BigN.max(a, b)
   }
 ```
@@ -25,4 +24,14 @@ class Calculator(MathDevice):
 
   def add(self, a, b):
     return max(a, b)
+```
+
+## Usage
+
+```js
+import { JS2Py } from "https://code4fukui.github.io/js2py/src/JS2Py.js";
+
+const f = new JS2Py()
+const js = `for (let i = 0; i < 10; i++) { for (let j = 0; j < i; j++) { i + j }}`;
+console.log(f.convert(js));
 ```

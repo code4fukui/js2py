@@ -1,9 +1,7 @@
-'use strict'
+import { espree } from "./espree.js";
+import { Traverse } from "./Traverse.js";
 
-const espree = require('espree')
-const Traverse = require('./Traverse')
-
-class Pattern {
+export class Pattern {
   constructor(
     patternOrString, 
     {matchStatement} = {matchStatement: false}
@@ -120,5 +118,3 @@ class Pattern {
     }
   }
 }
-
-module.exports = Pattern

@@ -1,6 +1,4 @@
-'use strict'
-
-class Traverse {
+export class Traverse {
 
   static traverse (ast, visitor, parent) {
     if (ast == null) return ast
@@ -29,5 +27,3 @@ class Traverse {
     return ret1 || ret2 || ast
   }
 }
-
-module.exports = Traverse

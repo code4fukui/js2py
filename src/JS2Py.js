@@ -1,15 +1,13 @@
-'use strict'
+import { espree } from "./espree.js";
+import { Traverse } from "./Traverse.js";
+import { BigNumberVisitor } from "./BigNumberVisitor.js";
+import { ApplyPatternsVisitor } from "./ApplyPatternsVisitor.js";
+import { JSVisitor } from "./JSVisitor.js";
+import { inlineStaticClassAttrs } from "./InlineStaticClassAttrs.js";
+import { ObjectPatternDestructure } from "./ObjectPatternDestructure.js";
+import { ToPyCodeVisitor } from "./ToPyCodeVisitor.js";
 
-const espree = require('espree')
-const Traverse = require('./Traverse')
-const BigNumberVisitor = require('./BigNumberVisitor')
-const ApplyPatternsVisitor = require('./ApplyPatternsVisitor')
-const JSVisitor = require('./JSVisitor')
-const inlineStaticClassAttrs = require('./InlineStaticClassAttrs')
-const ObjectPatternDestructure = require('./ObjectPatternDestructure')
-const ToPyCodeVisitor = require('./ToPyCodeVisitor')
-
-class JS2Py {
+export class JS2Py {
 
   convert(code) {
     const ast = espree.parse(code, {
@@ -71,5 +69,3 @@ class JS2Py {
     return ast.text
   }
 }
-
-module.exports = JS2Py

@@ -1,6 +1,4 @@
-'use strict'
-
-class RenameVisitor {
+export class RenameVisitor {
 
   constructor(oldIdentifier, newIdentifier) {
     this.oldIdentifier = oldIdentifier
@@ -16,5 +14,3 @@ class RenameVisitor {
     }
   }
 }
-
-module.exports = RenameVisitor

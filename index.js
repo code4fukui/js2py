@@ -1,7 +1,7 @@
-'use strict'
+import { JS2Py } from "./src/JS2Py.js";
+import { Pattern } from "./src/Pattern.js";
+import { Traverse } from "./src/Traverse.js";
+import { BigNumberVisitor } from "./src/BigNumberVisitor.js";
+import { ToPyCodeVisitor } from "./src/ToPyCodeVisitor.js";
 
-module.exports.JS2Py = require('./src/JS2Py')
-module.exports.Patten = require('./src/Pattern')
-module.exports.Traverse = require('./src/Traverse')
-module.exports.BigNumberVisitor = require('./src/BigNumberVisitor')
-module.exports.ToPyCodeVisitor = require('./src/ToPyCodeVisitor')
+export default { JS2Py, Pattern, Traverse, BigNumberVisitor, ToPyCodeVisitor };
