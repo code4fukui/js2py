@@ -276,9 +276,17 @@ ${consequent}${optionalElIf || optionalAlternate}`
   }
 
   leaveImportDeclaration(node) {
-    let packageName = node.source.text.substring(1, node.source.text.length - 1)
-    if (/^\./.test(packageName)) packageName = packageName.replace('./', 'bfxhfindicators.') // TODO move out
-    node.text = `from ${packageName} import ${node.specifiers[0].text}`
+    const packageName = (() => {
+      let s = node.source.value;
+      if (s.startsWith("./")) {
+        s = s.substring(1);
+      }
+      if (s.endsWith(".js")) {
+        s = s.substring(0, s.length - 3);
+      }
+      return s.replace(/\//g, ".");
+    })();
+    node.text = `from ${packageName} import ${node.specifiers.map(i => i.local.text).join(", ")}`
   }
 
   leaveProgram(node) { 

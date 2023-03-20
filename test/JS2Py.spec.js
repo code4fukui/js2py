@@ -205,6 +205,8 @@ test('addition', (t) => {
     ['for (;; i++) {}', 'while True:\n  pass\n  i += 1'],
     ['while (a > 3) {}', 'while a > 3:\n  pass'],
     ['while (true) {}', 'while True:\n  pass'],
+    [`import { A, B } from "./a.js";`, `from .a import A, B`],
+    [`import { A, B } from "a.js";`, `from a import A, B`],
   ]
   t.plan(cases.length)
   cases.map(([js, expected]) => t.equal(f.convert(js), expected, js))
