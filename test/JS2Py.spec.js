@@ -111,6 +111,7 @@ test('BigNumber', (t) => {
   const cases = [
     ['new BigN(a)', 'a'],
     ['BigN.max(list)', 'max(list)'],
+    ['BigN.max(a, b)', 'max(a, b)'],
     ['a.minus(b)', 'a - b'],
     ['a.plus(b)', 'a + b'],
     ['a.times(b)', 'a * b'],

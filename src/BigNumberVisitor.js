@@ -4,5 +4,10 @@ export class BigNumberVisitor {
     if (ast.callee.name !== 'BigN') return
     return ast.arguments[0]
   }
-  // TODO leaveFunction
+
+  leaveCallExpression(node) {
+    if (node.callee.object?.name == "BigN") {
+      node.callee = node.callee.property;
+    }
+  }
 }
