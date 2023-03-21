@@ -11,8 +11,8 @@ class Calculator extends MathDevice {
   constructor(args = []) {
     super({})
   }
-  static max(list) {
-    return BigN.max(list)
+  static max(a, b) {
+    return BigN.max(a, b)
   }
 }
 ```
@@ -27,9 +27,10 @@ class Calculator(MathDevice):
   def __init__(self, args = []):
     super().__init__({})
 
-  def add(self, list):
-    return max(list)
+  def add(self, a, b):
+    return max(a, b)
 ```
+BigN is a special name for [bignumber.js](https://github.com/MikeMcl/bignumber.js)
 
 ## Usage
 
