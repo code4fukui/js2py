@@ -192,6 +192,13 @@ ${this.indent}${body}`
     return
   }
 
+  leaveBreakStatement(node) {
+    node.text = "break";
+  }
+  leaveContinueStatement(node) {
+    node.text = "continue";
+  }
+
   leaveIfStatement(node) {
     const consequent = node.consequent.type === 'BlockStatement' ? node.consequent.text : this.indentBlock(+1, node.consequent.text)
     const alternate = node.alternate && (node.alternate.type === 'BlockStatement' ? node.alternate.text : this.indentBlock(+1, node.alternate.text))
