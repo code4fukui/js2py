@@ -1,63 +1,99 @@
-# Converts JavaScript to Python ES modules
+# js2py
 
-Proof of concept, converting JS to Python in Pure JavaScript ES modules, for example:
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
 
-```js
-import { BigNumber as BigN } from "https://unpkg.com/bignumber.js@latest/bignumber.mjs";
+A JavaScript ES module for converting JavaScript code to Python.
 
-class MathDevice {}
+This tool parses JavaScript into an Abstract Syntax Tree (AST), applies a series of transformations for syntax and library function mappings, and then generates equivalent Python code.
 
-class Calculator extends MathDevice {
-  constructor(args = []) {
-    super({})
-  }
-  static max(a, b) {
-    return BigN.max(a, b)
+## Features
+
+- **ES Module Native:** Runs in modern JavaScript environments like Deno and browsers.
+- **Syntax Conversion:** Translates modern JS syntax including arrow functions, object destructuring, classes (`extends`, `static`), and loops (`for`, `while`).
+- **Library Mappings:** Provides built-in patterns to convert common functions from:
+  - [BigNumber.js](https://github.com/MikeMcl/bignumber.js)
+  - Lodash (e.g., `_isEmpty`, `_max`)
+  - Standard `Math` and `Array` methods
+- **AST-Based:** Uses an Abstract Syntax Tree for robust and extensible transformations.
+
+## Examples
+
+### Object Destructuring
+
+**JavaScript:**
+```javascript
+let { a, b } = c;
+d = a + b;
+```
+**Python:**
+```python
+d = c.a + c.b
+```
+
+### BigNumber.js
+
+**JavaScript:**
+```javascript
+a.minus(b).times(0.5)
+```
+**Python:**
+```python
+(a - b) * 0.5
+```
+
+### Classes and Static Attributes
+
+**JavaScript:**
+```javascript
+class A {
+  fun() {
+    return A.id;
   }
 }
+A.id = "MyId";
 ```
-
-into 
-
-```py
-class MathDevice:
-  pass
-
-class Calculator(MathDevice):
-  def __init__(self, args = []):
-    super().__init__({})
-
-  def add(self, a, b):
-    return max(a, b)
+**Python:**
+```python
+class A:
+  def fun(self):
+    return "MyId"
 ```
-BigN is a special name for [bignumber.js](https://github.com/MikeMcl/bignumber.js)
 
 ## Usage
 
-### in JavaScript
+### As an ES Module
 
 ```js
 import { JS2Py } from "https://code4fukui.github.io/js2py/src/JS2Py.js";
 
-const f = new JS2Py()
-const js = `for (let i = 0; i < 10; i++) { for (let j = 0; j < i; j++) { i + j }}`;
-console.log(f.convert(js));
+const transpiler = new JS2Py();
+const jsCode = `for (let i = 0; i < 10; i++) { for (let j = 0; j < i; j++) { i + j }}`;
+const pythonCode = transpiler.convert(jsCode);
+
+console.log(pythonCode);
+// Output:
+// for i in range(0, 10):
+//   for j in range(0, i):
+//     i + j
 ```
 
-### as a command
+### From the Command Line
+
+The tool can be run directly using Deno to convert a file.
 
 ```sh
 deno run -A cli.js example.js
 ```
 
-## Test
+## Development
+
+To run the test suite:
 
 ```sh
-cd test
-deno test JS2Py.spec.js 
+deno test
 ```
 
-## Support Libraries
+## Supported Libraries
 
 - [MikeMcl/bignumber.js: A JavaScript library for arbitrary-precision decimal and non-decimal arithmetic](https://github.com/MikeMcl/bignumber.js)
 
@@ -65,3 +101,7 @@ deno test JS2Py.spec.js
 
 - [int3/js2py: A Javascript-to-Python translation assistant.](https://github.com/int3/js2py)
 - [kevinbarabash/js2py: Transpile JavaScript to Python.](https://github.com/kevinbarabash/js2py)
+
+## License
+
+MIT License
